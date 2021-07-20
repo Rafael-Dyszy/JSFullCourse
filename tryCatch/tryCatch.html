@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try Ctach</title>
+  </head>
+  <body>
+    <script src="sum.js"></script>
+    <script>
+      //   console.log(sum(3, 'a'));
+      //   alert(sum(8, 6));
+      //   document.write(sum(6, 4));
+      let numbers = '';
+      try {
+        numbers = sum(3, 'p');
+      } catch (error) {
+        alert('accept only numbers');
+        console.log(error.message);
+      }
+      console.log(numbers);
+      console.log('TryCatch continue run the code with the error!');
+    </script>
+  </body>
+</html>
