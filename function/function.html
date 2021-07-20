@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Function</h1>
+    <p>
+      Function are block of codes for do something and return values,<br />
+      when you will reuse block of codes you can make a function and write one
+      time this block of code and reuse the code.
+    </p>
+
+    <script>
+      function hello() {
+        document.write('Hello world! <br>');
+      }
+      hello();
+
+      //   expression function
+      const hello2 = function () {
+        document.write('Hello world expression function! <br>');
+      };
+      hello2();
+
+      //   arrow function
+      const hello3 = () => {
+        document.write('Hello arrow functons!');
+      };
+      hello3();
+
+      //   params with arrow function
+      const math = (number) => {
+        let result = number * 8;
+        document.write(`<br>The result is ${result}!`);
+      };
+      //   let numberInput = prompt('Write a number!');
+      //   math(numberInput);
+      math(10);
+
+      //   function woth return
+      const date = () => {
+        return new Date();
+      };
+      document.write('<br>' + date() + '<br>');
+
+      function somar(n1 = 0, n2 = 0) {
+        //   let _n1 = n1 || 0;
+        //   let _n2 = n2 || 0;
+        return n1 + n2;
+      }
+      document.write(somar(10, 5));
+    </script>
+  </body>
+</html>

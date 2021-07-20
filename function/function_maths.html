@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="maths()">Show times tables</button>
+    <button onclick="hideMaths()">Hide times tables</button>
+    <div id="output"></div>
+
+    <script>
+      let output = document.getElementById('output');
+
+      function maths() {
+        let number = parseFloat(prompt('Write a number!'));
+        let msg = '';
+
+        for (let i = 0; i <= 1000; i++) {
+          msg += `${number} x ${i} = ${number * i}<br>`;
+        }
+        output.innerHTML = msg;
+      }
+
+      function hideMaths() {
+        output.innerHTML = ``;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i <= 10; i++) {
+        for (let j = 0; j <= 10; j++) {
+          document.write(`${i} x ${j} = ${i * j}<br>`);
+        }
+        document.write('<br>');
+      }
+
+      let numberCalculate = prompt(
+        'Digite o numero que deseja fazer a tabuada!'
+      );
+      let number = 0;
+      //   while (number <= 10) {
+      //     document.write(
+      //       `${numberCalculate} x ${number} = ${number * numberCalculate}<br>`
+      //     );
+      //     number++;
+      //   }
+
+      do {
+        document.write(
+          `${numberCalculate} x ${number} = ${number * numberCalculate}<br>`
+        );
+        number++;
+      } while (number <= 10);
+    </script>
+  </body>
+</html>
