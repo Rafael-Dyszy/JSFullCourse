@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1 id="title1">Full Course JavaScript 2021</h1>
-    <button onclick="changeColorRed()">Change</button>
+    <button onclick="changeColor()">Change</button>
     <main class="cmain" id="idmain">
       <h2>Subtitle</h2>
       <p>lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -19,10 +19,9 @@
     </section>
     <script>
       'use strict';
-      console.log(document.getElementsByTagName('button'));
       let number = 0;
 
-      function changeColorRed() {
+      function changeColor() {
         if (number === 0) {
           number = 1;
           document.getElementById('title1').style = 'color: red';
@@ -30,8 +29,6 @@
           number = 0;
           document.getElementById('title1').style = 'color:green';
         }
-
-        console.log(number);
       }
     </script>
   </body>
