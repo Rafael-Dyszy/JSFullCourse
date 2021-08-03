@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex 1</title>
+  </head>
+  <body>
+    <h1 id="title1">Full Course JavaScript 2021</h1>
+    <button onclick="changeColorRed(`red`)">Red</button>
+    <button onclick="changeColorRed(`black`)">Black</button>
+    <main class="cmain" id="idmain">
+      <h2>Subtitle</h2>
+      <p>lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+    </main>
+    <section class="csection" id="idsection">
+      <h3>Subtitle</h3>
+      <p>lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+      <p>lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+    </section>
+    <script>
+      'use strict';
+      console.log(document.getElementsByTagName('button'));
+
+      function changeColorRed(valueColor) {
+        console.log(valueColor);
+        document.getElementById('title1').style.color = valueColor;
+      }
+    </script>
+  </body>
+</html>
