@@ -9,6 +9,9 @@
     element.innerHTML += '<b>' + name + '</b>';
   } else {
     //   parentElement acess the father element
-    element.parentElement.style.display += 'none';
+    // element.parentElement.style.display += 'none';
+
+    //to remove I can use .remove()
+    element.parentElement.remove();
   }
 })();
