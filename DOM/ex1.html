@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1 id="title1">Full Course JavaScript 2021</h1>
-    <button onclick="changeColor()">Change</button>
+    <button id="buttonColor" onclick="changeColor()">Change</button>
     <main class="cmain" id="idmain">
       <h2>Subtitle</h2>
       <p>lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -25,9 +25,13 @@
         if (number === 0) {
           number = 1;
           document.getElementById('title1').style = 'color: red';
+          document.getElementById('buttonColor').style =
+            'background-color: red';
         } else {
           number = 0;
           document.getElementById('title1').style = 'color:green';
+          document.getElementById('buttonColor').style =
+            'background-color: green';
         }
       }
     </script>
