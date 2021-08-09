@@ -11,9 +11,9 @@ let returnValue = arr.reduce((acc, curr, index, _arr) => {
 }, 0);
 // console.log(returnValue);
 
-const names = ['Cata', 'Rafa', 'Caty', 'Rafal'];
+const names = ['Cata', 'Rafa', 'Cata', 'Rafal'];
 let namesCount = names.reduce((names, currentName) => {
-  let firstLetter = currentName[0];
+  let firstLetter = currentName;
   if (names[firstLetter]) {
     names[firstLetter]++;
   } else {
@@ -23,14 +23,11 @@ let namesCount = names.reduce((names, currentName) => {
 }, {});
 // console.log(namesCount);
 
-const numbers = [1, 2, 3, 3, 4, 5, 4, 6, 9, 8, 6];
+const numbers = [1, 3, 4, 1, 4, 5, 3, 5, 8, 9];
 const numbersNoRepeated = numbers.reduce((numbers, currentNumber) => {
   if (numbers.indexOf(currentNumber) < 0) {
     numbers.push(currentNumber);
   }
   return numbers;
 }, []);
-// console.log(numbersNoRepeated);
-
-const numbersSingle = [...new Set(numbers)];
-console.log(numbersSingle);
+console.log(numbersNoRepeated);
