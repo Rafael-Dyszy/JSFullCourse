@@ -149,24 +149,24 @@
 
     <script>
       (function () {
-        function getIndex(i) {
-          const trHeader = document.querySelector('thead tr');
-          const thsHeader = trHeader.querySelectorAll('th');
+        const trHeader = document.querySelector('thead tr');
+        const thsHeader = trHeader.querySelectorAll('th');
+        const thsAlunos = trHeader.querySelectorAll('[aluno-nota]');
 
+        const INDICE_NOTAS = {};
+
+        Array.from(thsAlunos).forEach((th) => {
+          let prop = th.getAttribute('aluno-nota');
+          INDICE_NOTAS[prop] = getIndex(prop);
+        });
+
+        function getIndex(i) {
           const th = trHeader.querySelector(`[aluno-nota="${i}"]`);
           //const indiceTable = Array.prototype.indexOf.call(thsHeader, th);
           //const indiceTable = Array.from(thsHeader).indexOf(th);
           const indiceTable = [...thsHeader].indexOf(th);
           return indiceTable;
         }
-
-        const INDICE_NOTAS = {
-          n1: getIndex('n1'),
-          n2: getIndex('n2'),
-          n3: getIndex('n3'),
-          n4: getIndex('n4'),
-          media: getIndex('media'),
-        };
 
         const trs = document.querySelectorAll('tbody tr');
 
