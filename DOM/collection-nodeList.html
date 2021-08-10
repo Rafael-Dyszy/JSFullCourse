@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <ul id="list">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>imte 5</li>
+      </ul>
+    </div>
+
+    <script>
+      // querySelectorAll is static and return a nodeList
+      let nodeList = document.querySelectorAll('#list li');
+
+      //   getElements.. is live and change with the DOM
+      let htmlCollection = document
+        .getElementById('list')
+        .getElementsByTagName('li');
+
+      console.log(nodeList);
+      console.log(htmlCollection);
+
+      document.getElementById('list').innerHTML += '<li>item 6</li>';
+      console.log(nodeList);
+      console.log(htmlCollection);
+
+      document.querySelector('#list').innerHTML += '<li>item 7</li>';
+      console.log(nodeList);
+      console.log(htmlCollection);
+
+      document.querySelector('#list').innerHTML = '';
+      console.log(nodeList);
+      console.log(htmlCollection);
+    </script>
+  </body>
+</html>

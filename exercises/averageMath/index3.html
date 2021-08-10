@@ -22,10 +22,10 @@
         border-bottom: 3px solid currentColor;
       }
       .reproved {
-        background-color: red;
+        color: red;
       }
       .aproved {
-        background-color: green;
+        color: green;
       }
     </style>
   </head>
@@ -86,10 +86,12 @@
           .map(
             (student, index) =>
               `
-          <tr class=${student.averageNotes < 5 ? 'reproved' : 'aproved'}>
+          <tr >
             <td>${student.name}</td>
             ${student.notes.map((n) => `<td> ${n} </td>`).join('')}
-            <td>${student.averageNotes}</td>
+            <td class=${student.averageNotes < 5 ? 'reproved' : 'aproved'}>${
+                student.averageNotes
+              }</td>
           </tr>
           `
           )
