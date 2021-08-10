@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style type="text/css">
+      .underlined {
+        border-bottom: 3px solid currentColor;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div
+        class="hero center card-panel materialize-red darken-4 white-text z-depth-3"
+      >
+        <h1 class="materialize-red-text text-lighten-3">
+          Curso Javascript Completo
+        </h1>
+      </div>
+      <h2 class="materialize-red-text text-lighten-2 underlined">
+        Dados de Alunos
+      </h2>
+
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th aluno-nota="n1">Nota 1</th>
+            <th aluno-nota="n2">Nota 2</th>
+            <th aluno-nota="n3">Nota 3</th>
+            <th aluno-nota="n4">Nota 4</th>
+            <th aluno-nota="media">Média</th>
+          </tr>
+        </thead>
+
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <script src="js/calc.js"></script>
+
+    <script>
+      (function () {
+        const students = [
+          { name: 'Daniel', n1: 10, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Maria', n1: 10, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Rafael', n1: 10, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Catarine', n1: 1, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Jose', n1: 10, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'John', n1: 10, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'CataBunda', n1: 4.5, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Mindu', n1: 3, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Nariga', n1: 2, n2: 3, n3: 7.5, n4: 3 },
+          { name: 'Alice', n1: 4.5, n2: 3, n3: 7.5, n4: 3 },
+        ];
+        students.forEach((student) => {
+          student.averageNotes = average(
+            student.n1,
+            student.n2,
+            student.n3,
+            student.n4
+          );
+        });
+
+        let html = students
+          .map(
+            (student) =>
+              `
+          <tr>
+            <td>${student.name}</td>
+            <td>${student.n1}</td>
+            <td>${student.n2}</td>
+            <td>${student.n3}</td>
+            <td>${student.n4}</td>
+            <td>${student.averageNotes}</td>
+          </tr>
+          `
+          )
+          .join('');
+        console.log(html);
+
+        document.querySelector('tbody').innerHTML = html;
+      })();
+    </script>
+  </body>
+</html>
