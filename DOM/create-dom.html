@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>test DOM</h1>
+    <div class="container">
+      <p>Test 1</p>
+      <p>lorem <a href="#">link</a>.</p>
+      <p>Test2</p>
+
+      <h2>List</h2>
+      <ul>
+        <li>item 1</li>
+        <li>
+          item 2
+          <ul>
+            <li>item 2.a</li>
+            <li>item 2.b</li>
+            <li>item 2.c</li>
+          </ul>
+        </li>
+        <li>item3 <a href="#">Link</a></li>
+      </ul>
+    </div>
+
+    <script>
+      const title = document.createElement('h2');
+      const atribute = document.createAttribute('id');
+      atribute.value = 'titleId';
+      title.setAttributeNode(atribute);
+      title.setAttribute('style', 'color: red');
+
+      const text = document.createTextNode('insert with createText');
+      title.appendChild(text);
+      //   document.body.appendChild(title);
+      //   document.querySelector('ul ul').appendChild(title);
+      document.querySelector('.container').prepend(title);
+
+      const title2 = document.createElement('h1');
+      title2.style.background = 'yellow';
+      title2.textContent = 'second h1';
+
+      const title3 = title.cloneNode(true);
+      const p1 = document.querySelector('p');
+
+      p1.insertBefore(title3, p1.lastElementChild);
+      p1.insertBefore(title2, p1.firstChild);
+
+      const span = document.createElement('span');
+      span.textContent = 'span dynamic';
+      title.before(span, ' more parameters');
+      //   title.after(span);
+    </script>
+  </body>
+</html>

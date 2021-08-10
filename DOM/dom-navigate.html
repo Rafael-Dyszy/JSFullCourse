@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>test DOM</h1>
+    <div class="container">
+      <p>Test 1</p>
+      <p>lorem <a href="#">link</a>.</p>
+      <p>Test2</p>
+
+      <h2>List</h2>
+      <ul>
+        <li>item 1</li>
+        <li>
+          item 2
+          <ul>
+            <li>item 2.a</li>
+            <li>item 2.b</li>
+            <li>item 2.c</li>
+          </ul>
+        </li>
+        <li>item3 <a href="#">Link</a></li>
+      </ul>
+    </div>
+
+    <script>
+      const h2 = document.querySelector('h2');
+      h2.style.background = 'brown';
+      h2.previousElementSibling.style.background = 'green';
+      h2.nextElementSibling.style.background = 'orange';
+
+      const link = document.querySelector('a');
+      console.log(link.parentElement.childNodes);
+
+      const list = document.querySelector('ul ul');
+      //   children return all structure
+      console.log(list.children);
+      //   childNodes return only elements
+      console.log(list.childNodes);
+      // nodeType show you a code node os element
+      console.log(link.nextSibling.nodeType);
+    </script>
+  </body>
+</html>
