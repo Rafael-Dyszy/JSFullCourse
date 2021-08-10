@@ -3,10 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .containerText {
+        background-color: #ccc;
+        padding: 5px;
+      }
+      .containerText > p {
+        border: 1px solid black;
+        padding: 10px;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
+    <div class="containerText">
+      <p>container 1</p>
+      <p>container 2</p>
+      <p>container 3</p>
+    </div>
     <h1>test DOM</h1>
+
     <div class="container">
       <p>Test 1</p>
       <p>lorem <a href="#">link</a>.</p>
@@ -47,13 +63,41 @@
       const title3 = title.cloneNode(true);
       const p1 = document.querySelector('p');
 
-      p1.insertBefore(title3, p1.lastElementChild);
-      p1.insertBefore(title2, p1.firstChild);
+      //   p1.insertBefore(title3, p1.lastElementChild);
+      //   p1.insertBefore(title2, p1.firstChild);
 
       const span = document.createElement('span');
       span.textContent = 'span dynamic';
       title.before(span, ' more parameters');
       //   title.after(span);
+
+      const containerText = document.querySelector('.containerText');
+      //   positions: beforebegin - afterbegin - beforeend - afterend
+      containerText.insertAdjacentHTML(
+        'beforebegin',
+        '<b>Text insert beforebegin</b>'
+      );
+      containerText.insertAdjacentHTML(
+        'afterbegin',
+        '<b>Text insert afterbegin</b>'
+      );
+      containerText.insertAdjacentHTML(
+        'beforeend',
+        '<b>Text insert beforeend</b>'
+      );
+      containerText.insertAdjacentHTML(
+        'afterend',
+        '<b>Text insert afterend</b>'
+      );
+      const elementInsertAdjacent = document.createElement('h4');
+      elementInsertAdjacent.textContent = 'h4 element';
+
+      containerText.insertAdjacentText('beforebegin', '  insert text');
+      containerText.insertAdjacentElement('afterbegin', elementInsertAdjacent);
+
+      //   remove and
+      //   title.remove();
+      title.parentElement.removeChild(title);
     </script>
   </body>
 </html>
