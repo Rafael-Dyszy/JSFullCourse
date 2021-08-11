@@ -7,20 +7,33 @@
   function showErrorMessage(msg, cb) {
     feedBackMessage.firstChild.textContent = msg;
     feedBackMessage.classList.add('show');
-
+    feedBackMessage.lastElementChild.focus();
     function hideErrorMessage() {
       feedBackMessage.classList.remove('show');
       feedBackMessage.lastElementChild.removeEventListener(
         'click',
         hideErrorMessage
       );
+      feedBackMessage.lastElementChild.removeEventListener(
+        'keyup',
+        pressKeyBoardEsc
+      );
       if (typeof cb === 'function') {
         cb();
+      }
+    }
+    function pressKeyBoardEsc(e) {
+      if (e.keyCode === 27) {
+        hideErrorMessage();
       }
     }
     feedBackMessage.lastElementChild.addEventListener(
       'click',
       hideErrorMessage
+    );
+    feedBackMessage.lastElementChild.addEventListener(
+      'keyup',
+      pressKeyBoardEsc
     );
   }
 
