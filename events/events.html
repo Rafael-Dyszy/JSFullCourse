@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .container {
+        background-color: rgb(185, 185, 185);
+        padding: 20px;
+      }
+    </style>
+    <title>Events</title>
+  </head>
+  <body>
+    <h1>Events</h1>
+    <p>
+      Events occurs when the user or the browser manipulates the page,<br />
+      Events are a part of the Document Object Model (DOM)
+    </p>
+    <h2>Event handlers</h2>
+    <p>A function executed when the event occurs.</p>
+
+    <h2>Initial click</h2>
+    <button id="btn1">btn 1</button>
+    <button id="btn2">btn 2</button>
+    <button id="btn3">btn 3</button>
+    <div>
+      <p id="paragraph1"></p>
+    </div>
+
+    <h2>event delegation</h2>
+    <div class="container">
+      <button>button 1</button>
+      <button>button 2</button>
+      <button>button 3</button>
+    </div>
+
+    <script>
+      const btn1 = document.getElementById('btn1');
+      const btn2 = document.getElementById('btn2');
+      const btn3 = document.getElementById('btn3');
+
+      const paragraph1 = document.getElementById('paragraph1');
+
+      btn1.onclick = function addLettersconsole() {
+        console.log('add letter');
+        paragraph1.style.color = 'green';
+      };
+
+      function changeColor() {
+        paragraph1.textContent = 'btn2 ';
+        paragraph1.style.background = 'red';
+      }
+
+      function addLetters() {
+        paragraph1.style.background = 'none';
+        paragraph1.textContent = 'add words';
+      }
+      btn2.onclick = changeColor;
+      btn1.addEventListener('click', addLetters);
+
+      function addConsoleLog() {
+        console.log('btn');
+      }
+      btn3.addEventListener('click', addConsoleLog, false);
+
+      const container = document.querySelector('.container');
+
+      container.addEventListener('click', function (e) {
+        // e.stopPropagation();
+        if (e.target.nodeName === 'BUTTON') console.log(e.target);
+      });
+    </script>
+  </body>
+</html>
