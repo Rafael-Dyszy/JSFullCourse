@@ -19,29 +19,23 @@
     },
   ];
 
-  // function addListennerLi(li) {
-  //   li.addEventListener('click', function () {
-  //     console.log(this);
-  //   });
-  // }
-
   function generateLi(obj) {
     const li = document.createElement('li');
     const btnCompleted = document.createElement('button');
     const p = document.createElement('p');
     const i = document.createElement('i');
-    const iEdit = document.createElement('i');
-    const iRemove = document.createElement('i');
+    const btnEdit = document.createElement('i');
+    const btnRemove = document.createElement('i');
 
     li.className = 'todo-item';
     btnCompleted.className = 'button-check';
     btnCompleted.setAttribute('data-action', 'btnCompleted');
     p.className = 'task-name';
     i.className = 'fas fas-check displayNone';
-    iEdit.className = 'fas fa-edit';
-    iEdit.setAttribute('data-action', 'iEdit');
-    iRemove.className = 'fas fa-trash-alt';
-    iRemove.setAttribute('data-action', 'iRemove');
+    btnEdit.className = 'fas fa-edit';
+    btnEdit.setAttribute('data-action', 'btnEdit');
+    btnRemove.className = 'fas fa-trash-alt';
+    btnRemove.setAttribute('data-action', 'btnRemove');
     p.textContent = obj.items;
 
     const containerEdit = document.createElement('div');
@@ -63,14 +57,35 @@
 
     li.appendChild(btnCompleted).appendChild(i);
     li.appendChild(p);
-    li.appendChild(iEdit);
-    li.appendChild(iRemove);
-    // addListennerLi(li);
+    li.appendChild(btnEdit);
+    li.appendChild(btnRemove);
     return li;
   }
 
   function targetBtnUl(e) {
-    console.log(e.target.getAttribute('data-action'));
+    const dataAction = e.target.getAttribute('data-action');
+    if (!dataAction) return;
+
+    let currentLi = e.target;
+    while (currentLi.nodeName !== 'LI') {
+      currentLi = currentLi.parentElement;
+    }
+    const currentLiIndex = [...lis].indexOf(currentLi);
+
+    const actions = {
+      btnEdit: function () {
+        console.log('edit btn in object');
+      },
+      btnRemove: function () {
+        arrTasks.splice(currentLiIndex, 1);
+        // currentLi.remove();
+        // currentLi.parentElement.removeChild(currentLi);
+        // renderTasks();
+      },
+    };
+    if (actions[dataAction]) {
+      actions[dataAction]();
+    }
   }
 
   ul.addEventListener('click', targetBtnUl);
