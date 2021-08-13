@@ -6,20 +6,34 @@
   const ul = document.getElementById('todo-list');
   let lis = ul.getElementsByTagName('li');
 
-  const arrTasks = [
-    {
-      items: 'item 1',
-      completed: false,
-      date: Date.now(),
-    },
-    {
-      items: 'item 2',
-      completed: false,
-      date: Date.now(),
-    },
-  ];
+  const arrTasks = getSavedData();
+
+  function getSavedData() {
+    let getData = localStorage.getItem('tasks');
+    getData = JSON.parse(getData);
+    return getData
+      ? getData
+      : [
+          {
+            items: 'item 1',
+            completed: false,
+            dateItem: Date.now(),
+          },
+          {
+            items: 'item 2',
+            completed: false,
+            dateItem: Date.now(),
+          },
+        ];
+  }
+
+  function setNewData() {
+    localStorage.setItem('tasks', JSON.stringify(arrTasks));
+  }
+  setNewData();
 
   function generateLi(obj) {
+    const containerEdit = document.createElement('div');
     const li = document.createElement('li');
     const btnCompleted = document.createElement('button');
     const p = document.createElement('p');
@@ -31,34 +45,36 @@
     btnCompleted.className = 'button-check';
     btnCompleted.setAttribute('data-action', 'btnCompleted');
     p.className = 'task-name';
-    i.className = 'fas fas-check displayNone';
+    i.setAttribute('data-action', 'btnCompleted');
+    i.className = `fas fa-check ${obj.completed ? '' : 'displayNone'}`;
     btnEdit.className = 'fas fa-edit';
     btnEdit.setAttribute('data-action', 'btnEdit');
     btnRemove.className = 'fas fa-trash-alt';
     btnRemove.setAttribute('data-action', 'btnRemove');
     p.textContent = obj.items;
 
-    const containerEdit = document.createElement('div');
     containerEdit.className = 'editContainer';
     const inputEdit = document.createElement('input');
     inputEdit.setAttribute('type', 'text');
+    inputEdit.value = obj.items;
     inputEdit.className = 'editInput';
     const containerEditBtn = document.createElement('button');
     containerEditBtn.className = 'editButton';
     containerEditBtn.textContent = 'Edit';
+    containerEditBtn.setAttribute('data-action', 'containerEditBtn');
     const containerCancelBtn = document.createElement('button');
     containerCancelBtn.className = 'cancelButton';
     containerCancelBtn.textContent = 'Cancel';
+    containerCancelBtn.setAttribute('data-action', 'containerCancelBtn');
     containerEdit.appendChild(inputEdit);
     containerEdit.appendChild(containerEditBtn);
     containerEdit.appendChild(containerCancelBtn);
-
-    li.appendChild(containerEdit);
 
     li.appendChild(btnCompleted).appendChild(i);
     li.appendChild(p);
     li.appendChild(btnEdit);
     li.appendChild(btnRemove);
+    li.appendChild(containerEdit);
     return li;
   }
 
@@ -74,13 +90,39 @@
 
     const actions = {
       btnEdit: function () {
-        console.log('edit btn in object');
+        const editContainer = currentLi.querySelector('.editContainer');
+        [
+          [...ul.querySelectorAll('.editContainer')].forEach((el) => {
+            el.removeAttribute('style');
+          }),
+        ];
+        editContainer.style.display = 'flex';
       },
       btnRemove: function () {
         arrTasks.splice(currentLiIndex, 1);
         // currentLi.remove();
         // currentLi.parentElement.removeChild(currentLi);
-        // renderTasks();
+        renderTasks();
+        setNewData();
+      },
+      containerEditBtn: function () {
+        const val = currentLi.querySelector('.editInput').value;
+
+        arrTasks[currentLiIndex].items = val;
+        renderTasks();
+        setNewData();
+      },
+      containerCancelBtn: function () {
+        currentLi.querySelector('.editContainer').removeAttribute('style');
+        document.querySelector('.editInput').value =
+          arrTasks[currentLiIndex].items;
+      },
+      btnCompleted: function () {
+        arrTasks[currentLiIndex].completed = !arrTasks[currentLiIndex]
+          .completed;
+
+        renderTasks();
+        setNewData();
       },
     };
     if (actions[dataAction]) {
@@ -103,6 +145,7 @@
       completed: false,
       date: Date.now(),
     });
+    setNewData();
   }
 
   inputForm.addEventListener('submit', (e) => {
