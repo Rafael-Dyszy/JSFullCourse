@@ -11,7 +11,7 @@
   function getSavedData() {
     let getData = localStorage.getItem('tasks');
     getData = JSON.parse(getData);
-    return getData
+    return getData && getData.length
       ? getData
       : [
           {
