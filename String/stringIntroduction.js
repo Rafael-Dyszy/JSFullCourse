@@ -65,3 +65,14 @@ function hideNumbers(number) {
 }
 console.log(hideNumbers(telephone2));
 console.log(hideNumbers(telephone1));
+
+// startsWith and endWith
+const str3 = 'Today is Saturday';
+// console.log(str3.startsWith(`Today`));
+// console.log(str3.endsWith('y'));
+
+// charAt and charCodeAt
+const str4 = 'abcdefgh';
+console.log(str4.charAt(1));
+console.log(str4.charCodeAt(1));
+console.log(str4.charCodeAt(0));
