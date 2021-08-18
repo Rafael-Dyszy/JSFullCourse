@@ -1,0 +1,15 @@
+const date = new Date();
+console.log(date.toString());
+console.log(date.getDay());
+console.log(date.getFullYear());
+console.log(date.getHours());
+console.log(date.getTime());
+console.log(date.getTimezoneOffset());
+console.log(date.setFullYear(2022));
+console.log('------------------');
+console.log(date.toString());
+console.log(date.toDateString());
+console.log(date.toISOString());
+console.log(date.toLocaleDateString());
+console.log(date.toLocaleString('pt-BR', { month: 'long', weekday: 'long' }));
+console.log(date.toLocaleString('pt-BR', { hour12: false }));
