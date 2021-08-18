@@ -18,6 +18,29 @@
       console.log(outerWidth);
       console.log(innerHeight);
       console.log(innerWidth);
+
+      const locationBOM = location;
+      console.log(locationBOM);
+
+      const navigatorBOM = navigator;
+      console.log(navigatorBOM);
+      console.log(navigatorBOM.geolocation);
+
+      const screenBOM = screen;
+      console.log(screenBOM);
+
+      window.addEventListener('load', function () {
+        console.log('load');
+      });
+      window.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded');
+      });
+      window.addEventListener('resize', function () {
+        console.log('resize', innerWidth, innerHeight);
+      });
+      window.addEventListener('scroll', function () {
+        console.log('scroll', pageXOffset, pageYOffset);
+      });
     </script>
   </body>
 </html>
