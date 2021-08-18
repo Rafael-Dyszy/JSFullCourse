@@ -2,17 +2,39 @@
   'use strict';
   let dataToSave = document.querySelector('.hero-content h1 span').innerText;
 
-  const dateNow = new Date();
+  const today = new Date();
 
   const dateSave = getDateToSave(dataToSave);
 
-  const leftTime = dateSave.getTime() - dateNow.getTime();
-  console.log(leftTime);
+  let leftTime = dateSave.getTime() - today.getTime();
+
+  const ONE_MINUTE = 60 * 1000;
+  const ONE_HOUR = 60 * ONE_MINUTE;
+  const ONE_DAY = 24 * ONE_HOUR;
+
+  let daysLeft = parseInt(leftTime / ONE_DAY);
+  leftTime = leftTime - daysLeft * ONE_DAY;
+
+  let hoursLeft = parseInt(leftTime / ONE_HOUR);
+  leftTime = leftTime - hoursLeft * ONE_HOUR;
+
+  let minutesLeft = parseInt(leftTime / ONE_MINUTE);
+  leftTime = leftTime - minutesLeft * ONE_MINUTE;
+
+  let secondsLeft = parseInt(leftTime / 1000);
+
+  insertTimeLeft(daysLeft, hoursLeft, minutesLeft, secondsLeft);
+
+  function insertTimeLeft(days, hours, minutes, seconds) {
+    let p = document.createElement('p');
+    p.innerHTML = `Faltam ${days} dias ${hours} horas ${minutes} minutos e ${seconds} segundos`;
+    document.querySelector('.hero-content').appendChild(p);
+  }
 
   function getDateToSave(str) {
     const [date, hour] = str.split(' ');
     const [day, month, year] = date.split('/');
     const [hours, minutes] = hour.split('H');
-    return new Date(year, month, day, hours, minutes);
+    return new Date(year, month - 1, day, hours, minutes);
   }
 })();
