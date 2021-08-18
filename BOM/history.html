@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>History</h1>
+    <button id="nextBtn">Next</button>
+    <button id="backBtn">Back</button>
+    <a href="http://google.com">Google</a>
+
+    <script>
+      document.getElementById('nextBtn').addEventListener('click', function () {
+        history.forward();
+      });
+      document.getElementById('backBtn').addEventListener('click', function () {
+        history.back();
+      });
+    </script>
+  </body>
+</html>
