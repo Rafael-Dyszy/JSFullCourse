@@ -1,4 +1,4 @@
-var s = '12:45:54PM';
+var s = '10:45:54PM';
 var v = s;
 let militaryHours = 0;
 if (s.charAt(8) === 'P') {

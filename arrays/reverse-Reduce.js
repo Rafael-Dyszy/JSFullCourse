@@ -21,7 +21,7 @@ let namesCount = names.reduce((names, currentName) => {
   }
   return names;
 }, {});
-// console.log(namesCount);
+console.log(namesCount);
 
 const numbers = [1, 3, 4, 1, 4, 5, 3, 5, 8, 9];
 const numbersNoRepeated = numbers.reduce((numbers, currentNumber) => {
