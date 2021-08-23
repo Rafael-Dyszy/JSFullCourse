@@ -8,7 +8,7 @@ function sum() {
   }, 0);
 }
 
-console.log(sum(1, 2, 3, 4, 5));
+sum(1, 2, 3, 4, 5);
 function average() {
   const averageNumbers = sum.apply(null, arguments);
   return averageNumbers / arguments.length;
