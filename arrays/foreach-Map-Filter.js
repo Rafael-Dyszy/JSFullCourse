@@ -15,7 +15,7 @@ const arr1 = arrFilter.filter((el) => {
 // forEach() is a loop
 const arrForEach = [1, 2, 0, 5, 4, 8, 7, 6, 2];
 arrForEach.forEach((el, i, _arr) => {
-  //   console.log(i, el);
+  console.log(i, el);
 });
 
 //  method map()
