@@ -7,4 +7,4 @@ function stairCase(n) {
   }
 }
 
-stairCase(6);
+// stairCase(6);
